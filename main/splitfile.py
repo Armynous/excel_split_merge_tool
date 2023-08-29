@@ -11,7 +11,7 @@ class SplitFile:
 
 # -------------------------------------------------------------------------- #
 
-    def splitExcelFile(self, output:int) -> None:
+    def splitExcelFile(self, file_path:str, n_output_file:int) -> None:
 
         excel_files = glob.glob(os.path.join("data", "*.xlsx"))
 
@@ -52,7 +52,7 @@ class SplitFile:
 
     def mergeFile(self):
 
-        output_file = glob.glob(os.path.join("OUTPUT", "*.xlsx"))
+        output_file = glob.glob(os.path.join("merge_file", "*.xlsx"))
 
         excel_lst = []
 
@@ -64,10 +64,20 @@ class SplitFile:
 
         combined = pd.concat(excel_lst, axis=0)
 
-        output_file_path = os.path.join('OUTPUT', 'combined_file.xlsx')
+        output_file_path = os.path.join('merge_file', 'combined_file.xlsx')
 
         combined.to_excel(output_file_path, index=False)
 
         print("Merge file Successful")
+
+# -------------------------------------------------------------------------- #
+
+    def read_excel(self):
+        pass
+    
+# -------------------------------------------------------------------------- #
+
+    def read_config(self):
+        pass
 
 # -------------------------------------------------------------------------- #
