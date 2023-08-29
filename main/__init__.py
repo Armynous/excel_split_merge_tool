@@ -1,1 +1,1 @@
-from main.splitfile import SplitFile    
+from main.ExcelSplitMergeTool import ExcelSplitMergeTool
