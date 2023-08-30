@@ -7,7 +7,7 @@ __github__ = "https://github.com/Armynous"
 
 #----------------------------------------------------------------------------#
 
-with open("requirements.txt", "r") as file_obj:
+with open("requirements.txt", "r", encoding='utf-8') as file_obj:
 
     file_data = file_obj.read()
 
@@ -23,7 +23,7 @@ setup(
     author=__authur__,
     author_email=__email__,
     packages=['main'],
-    install_requires=[],
+    requires=[],
     url='https://github.com/Armynous/split_n_merge_excelfile.git',
     include_package_data=True
 )
