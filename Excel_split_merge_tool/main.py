@@ -1,7 +1,7 @@
 import os
 import glob
 
-from Excel_split_merge_tool.resources.configs import Configs
+from excel_split_merge_tool.resources.configs import Configs
 from tqdm import tqdm
 import pandas as pd
 
@@ -96,20 +96,20 @@ class ExcelSplitMergeTool:
             merger.merge_file(folder_path, output_file_name)
         """
 
-        output_file = glob.glob(os.path.join(folder_path, "*.xlsx"))
+        folder = glob.glob(os.path.join(folder_path, "*.xlsx"))
 
         excel_lst = []
 
-        for file in tqdm(range(len(output_file))):
+        for file in tqdm(range(len(folder))):
 
-            output = pd.read_excel(output_file[file])
+            output = pd.read_excel(folder[file])
             excel_lst.append(output)
 
         combined = pd.concat(excel_lst, axis=0)
         
         output_file_path = os.path.join(
             folder_path,
-            f"Merge_{output_file_name}"
+            f"Merge_{output_file_name}.xlsx"
         )
         
         combined.to_excel(output_file_path, index=False)
