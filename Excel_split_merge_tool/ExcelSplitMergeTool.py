@@ -2,6 +2,7 @@ import os
 import glob
 import json
 
+from Excel_split_merge_tool.resources.configs import Configs
 from tqdm import tqdm
 import pandas as pd
 
@@ -15,8 +16,7 @@ class ExcelSplitMergeTool:
     def split_excel_file(self, file_path:str) -> None:
 
         file = self.read_excel(file_path)
-        config = self.read_config()
-        num_output_file = config['n_output_file']
+        num_output_file = Configs.NUM_OUPUT_FILE
 
         rows_per_file = file.shape[0] // num_output_file
         remainder_rows = file.shape[0] % num_output_file
@@ -62,15 +62,6 @@ class ExcelSplitMergeTool:
         combined.to_excel(output_file_path, index=False)
 
         print("Merge file Successful")
-
-# -------------------------------------------------------------------------- #
-
-    def read_config(self):
-        
-        with open("resources\config.json", "r") as f:
-            config = json.load(f)
-
-        return config
     
 # -------------------------------------------------------------------------- #
 
