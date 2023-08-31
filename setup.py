@@ -27,7 +27,7 @@ setup(
         'numpy>=1.25.2'
     ],
     package_dir={'Excel_split_merge_tool': 'Excel_split_merge_tool'},
-    package_data={'Excel_split_merge_tool': ['resource/*.json']}
+    package_data={'Excel_split_merge_tool': ['resource/*.json']},
     include_package_data=True
 )
 
