@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = '0.0.8'
+__version__ = '0.0.9'
 __authur__ = "Pongpol Prommacharoen"
 __email__ = "pongpol095@gmail.com"
 __github__ = "https://github.com/Armynous"
@@ -18,7 +18,6 @@ setup(
     author_email=__email__,
     packages=find_packages(include=[
         'Excel_split_merge_tool',
-        'resources'
     ]),
     url='https://github.com/Armynous/split_n_merge_excelfile.git',
     install_requires=[
@@ -27,6 +26,8 @@ setup(
         'pandas>=2.1.0',
         'numpy>=1.25.2'
     ],
+    package_dir={'Excel_split_merge_tool': 'Excel_split_merge_tool'},
+    package_data={'Excel_split_merge_tool': ['resource/*.json']}
     include_package_data=True
 )
 
