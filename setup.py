@@ -18,7 +18,7 @@ setup(
     author_email=__email__,
     packages=['Excel_split_merge_tool'],
     package_dir={'Excel_split_merge_tool': 'Excel_split_merge_tool'},
-    package_data={'Excel_split_merge_tool': ['resources/*.json']},
+    package_data={'Excel_split_merge_tool': ['resources/*.py']},
     url='https://github.com/Armynous/split_n_merge_excelfile.git',
     install_requires=[
         'tqdm',

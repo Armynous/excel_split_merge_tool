@@ -1,6 +1,5 @@
 import os
 import glob
-import json
 
 from Excel_split_merge_tool.resources.configs import Configs
 from tqdm import tqdm
