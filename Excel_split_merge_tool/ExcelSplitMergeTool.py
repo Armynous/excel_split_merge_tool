@@ -104,7 +104,8 @@ class ExcelSplitMergeTool:
             excel_lst.append(output)
 
         combined = pd.concat(excel_lst, axis=0)
-        output_file_path = os.path.join('merge_file', 'combined_file.xlsx')
+        file_name = os.path.basename(file)
+        output_file_path = os.path.join(f"Merge_{file_name}")
         combined.to_excel(output_file_path, index=False)
 
         print("Merge file Successful")
