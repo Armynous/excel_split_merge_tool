@@ -28,7 +28,7 @@ class ExcelSplitMergeTool:
             file_path (str): The path to the input Excel file.
         
         Returns:
-            Excel file (.xlsx) file follow by NUM_OUPUT_FILE.
+            None.
             
         Example:
             splitter = ExcelSplitter()
@@ -72,26 +72,28 @@ class ExcelSplitMergeTool:
 
 # -------------------------------------------------------------------------- #
 
-    def merge_file(self, folder_path:str):
+    def merge_file(self, folder_path:str, output_file_name:str):
         
         """
         Merge multiple Excel files within a specified directory into a single combined Excel file.
-        
-        This function reads all Excel files within the provided 'folder_path', 
+
+        This function reads all Excel files within the provided 'folder_path',
         combines their contents row-wise, and saves
-        the combined data as a new Excel file named 'combined_file.xlsx' in a separate directorynamed 'merge_file'.
-        
+        the combined data as a new Excel file with the given 'output_file_name'
+        in the same directory.
+
         Parameters:
             folder_path (str): The path to the directory containing the Excel files to be merged.
-        
+            output_file_name (str): The desired name for the output merged Excel file.
+
         Returns:
             None
-        
+
         Example:
             merger = ExcelMerger()
             folder_path = "folder_with_excel_files"
-            merger.merge_file(folder_path)
-        
+            output_file_name = "combined_data.xlsx"
+            merger.merge_file(folder_path, output_file_name)
         """
 
         output_file = glob.glob(os.path.join(folder_path, "*.xlsx"))
@@ -104,8 +106,12 @@ class ExcelSplitMergeTool:
             excel_lst.append(output)
 
         combined = pd.concat(excel_lst, axis=0)
-        file_name = os.path.basename(file)
-        output_file_path = os.path.join(f"Merge_{file_name}")
+        
+        output_file_path = os.path.join(
+            folder_path,
+            f"Merge_{output_file_name}"
+        )
+        
         combined.to_excel(output_file_path, index=False)
 
         print("Merge file Successful")
